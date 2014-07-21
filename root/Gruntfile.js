@@ -62,7 +62,6 @@ module.exports = function( grunt ) {
 		test:   {
 			files: ['assets/js/test/**/*.js']
 		},
-		{% if ('sass' === css_type) { %}
 		sass:   {
 			all: {
 				files: {
@@ -70,15 +69,14 @@ module.exports = function( grunt ) {
 				}
 			}
 		},
-		{% } else if ('less' === css_type) { %}
-		less:   {
-			all: {
-				files: {
-					'assets/css/{%= js_safe_name %}.css': 'assets/css/less/{%= js_safe_name %}.less'
-				}
+		autoprefixer: {
+			dist: {
+				options: {
+					browsers: [ 'last 1 version', '> 1%', 'ie 8' ]
+				},
+				files: ['style.css']
 			}
 		},
-		{% } %}
 		cssmin: {
 			options: {
 				banner: '/*! <%= pkg.title %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
@@ -101,7 +99,12 @@ module.exports = function( grunt ) {
 			}
 		},
 		watch:  {
-			{% if ('sass' === css_type) { %}
+			livereload: {
+				files: ['assets/css/*.css'],
+				options: {
+					livereload: true
+				}
+			},
 			sass: {
 				files: ['assets/css/sass/*.scss'],
 				tasks: ['sass', 'cssmin'],
@@ -109,23 +112,6 @@ module.exports = function( grunt ) {
 					debounceDelay: 500
 				}
 			},
-			{% } else if ('less' === css_type) { %}
-			less: {
-				files: ['assets/css/less/*.less'],
-				tasks: ['less', 'cssmin'],
-				options: {
-					debounceDelay: 500
-				}
-			},
-			{% } else { %}
-			styles: {
-				files: ['assets/css/src/*.css'],
-				tasks: ['cssmin'],
-				options: {
-					debounceDelay: 500
-				}
-			},
-			{% } %}
 			scripts: {
 				files: ['assets/js/src/**/*.js', 'assets/js/vendor/**/*.js'],
 				tasks: ['jshint', 'concat', 'uglify'],
@@ -137,13 +123,9 @@ module.exports = function( grunt ) {
 	} );
 
 	// Default task.
-	{% if ('sass' === css_type) { %}
-	grunt.registerTask( 'default', ['jshint', 'concat', 'uglify', 'sass', 'cssmin'] );
-	{% } else if ('less' === css_type) { %}
-	grunt.registerTask( 'default', ['jshint', 'concat', 'uglify', 'less', 'cssmin'] );
-	{% } else { %}
-	grunt.registerTask( 'default', ['jshint', 'concat', 'uglify', 'cssmin'] );
-	{% } %}
+	grunt.registerTask( 'default', ['jshint', 'concat', 'uglify', 'sass', 'autoprefixer', 'cssmin'] );
 
 	grunt.util.linefeed = '\n';
+	
+	grunt.loadNpmTasks('grunt-contrib-watch');
 };
