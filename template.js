@@ -1,8 +1,8 @@
 /**
- * grunt-wp-theme
- * https://github.com/10up/grunt-wp-theme
+ * grunt-wp-foundation
+ * https://github.com/zzramesses/grunt-wp-theme
  *
- * Copyright (c) 2013 Eric Mann, 10up
+ * Forked from https://github.com/10up/grunt-wp-theme Copyright (c) 2013 Eric Mann, 10up
  * Licensed under the MIT License
  */
 

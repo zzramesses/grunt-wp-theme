@@ -1,4 +1,4 @@
-# grunt-wp-theme
+# grunt-wp-foundation
 
 > Create a WordPress theme with [grunt-init][].
 
@@ -12,13 +12,7 @@ Once grunt-init is installed, place this template in your `~/.grunt-init/` direc
 ### Linux/Mac Users
 
 ```
-git clone git@github.com:10up/grunt-wp-theme.git ~/.grunt-init/wp-theme
-```
-
-### Windows Users
-
-```
-git clone git@github.com:10up/grunt-wp-theme.git %USERPROFILE%/.grunt-init/wp-theme
+git clone git@github.com:zzramesses/grunt-wp-theme.git
 ```
 
 ## Usage
@@ -26,7 +20,7 @@ git clone git@github.com:10up/grunt-wp-theme.git %USERPROFILE%/.grunt-init/wp-th
 At the command-line, cd into an empty directory, run this command and follow the prompts.
 
 ```
-grunt-init wp-theme
+grunt-init wp-foundation
 ```
 
 _Note that this template will generate files in the current directory, so be sure to change to a new directory first if you don't want to overwrite existing files._
