@@ -1,28 +1,11 @@
 module.exports = function( grunt ) {
 	'use strict';
-
 	// Load all grunt tasks
 	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
-
+	
 	// Project configuration
 	grunt.initConfig( {
 		pkg:    grunt.file.readJSON( 'package.json' ),
-		concat: {
-			options: {
-				stripBanners: true,
-				banner: '/*! <%= pkg.title %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
-					' * <%= pkg.homepage %>\n' +
-					' * Copyright (c) <%= grunt.template.today("yyyy") %>;' +
-					' * Licensed GPLv2+' +
-					' */\n'
-			},
-			{%= js_safe_name %}: {
-				src: [
-					'assets/js/src/{%= js_safe_name %}.js'
-				],
-				dest: 'assets/js/{%= js_safe_name %}.js'
-			}
-		},
 		jshint: {
 			browser: {
 				all: [
@@ -65,7 +48,7 @@ module.exports = function( grunt ) {
 			options: {
 				debounceDelay: 500
 			}
-		}
+		},
 		sass:   {
 			all: {
 				files: {
