@@ -25,6 +25,22 @@ module.exports = function( grunt ) {
 				}
 			}   
 		},
+		concat: {
+			options: {
+				stripBanners: true,
+				banner: '/*! <%= pkg.title %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
+					' * <%= pkg.homepage %>\n' +
+					' * Copyright (c) <%= grunt.template.today("yyyy") %>;' +
+					' * Licensed GPLv2+' +
+					' */\n'
+			},
+			{%= js_safe_name %}: {
+				src: [
+					'assets/js/src/{%= js_safe_name %}.js'
+				],
+				dest: 'assets/js/{%= js_safe_name %}.js'
+			}
+		},
 		uglify: {
 			all: {
 				files: {
