@@ -37,9 +37,7 @@ After running the init command above, you will be presented with a standard dire
 
     /theme
     .. /assets
-    .. .. /css
-    .. .. .. /src
-    .. .. .. /sass
+    .. .. /sass
     .. .. /js
     .. .. .. /src
     .. /images
@@ -57,9 +55,9 @@ After running the init command above, you will be presented with a standard dire
     .. screenshot.png
     .. style.css
 
-### CSS vs Sass vs LESS
+###Sass
 
-Depending on how you answer the prompt regarding the use of a preprocessor, you will either have a `/src` directory (CSS), a `/sass` directory (Sass), or a `/less` directory (LESS) under your normal `/css` directory.  The goal here is that you only ever edit files in the related source directory and Grunt will automatically build and minify your final stylesheets directly in `/css`.
+You will either have  a `/sass` directory (Sass) `/assets` directory.  The goal here is that you only ever edit files in the related source directory and Grunt will automatically build and minify your final stylesheets directly in `/css`.
 
 the raw files will be processed into `style.css`.
 
