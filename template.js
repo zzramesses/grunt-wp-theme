@@ -51,7 +51,7 @@ exports.template = function( grunt, init, done ) {
 			'grunt-contrib-jshint': '~0.1.1',
 			'grunt-contrib-nodeunit': '~0.1.2',
 			'grunt-contrib-watch': '~0.5.0',
-			'autoprefixer': '~0.8.2',
+			'grunt-autoprefixer': '~0.1',
 		};
 		
 		// Sanitize names where we need to for PHP/JS
