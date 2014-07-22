@@ -59,9 +59,13 @@ module.exports = function( grunt ) {
 				}
 			}
 		},
-		test:   {
-			files: ['assets/js/test/**/*.js']
-		},
+		scripts: {
+			files: ['assets/js/src/**/*.js'],
+			tasks: ['jshint', 'concat', 'uglify'],
+			options: {
+				debounceDelay: 500
+			}
+		}
 		sass:   {
 			all: {
 				files: {
@@ -107,26 +111,19 @@ module.exports = function( grunt ) {
 			}
 		},
 		watch: {
-			files: ['assets/scss/*.scss'],
-			options: {
-				livereload: true,
-			},
-		},
-			sass: {
-				files: ['assets/sass/*.scss'],
-				tasks: ['sass', 'cssmin'],
-				options: {
-					debounceDelay: 500
-				}
-			},
-			scripts: {
-				files: ['assets/js/src/**/*.js', 'assets/js/vendor/**/*.js'],
-				tasks: ['jshint', 'concat', 'uglify'],
-				options: {
-					debounceDelay: 500
-				}
-			}
-		}
+	      sass: {
+	        files: ['assets/sass/*.sass'],
+	        options: {
+	          livereload: true,
+	        }
+	      },
+	      php: {
+	        files: ['*.php'],
+	        options: {
+	          livereload: true,
+	        }
+	      }
+	    },
 	} );
 
 	// Default task.
