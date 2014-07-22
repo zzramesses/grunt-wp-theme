@@ -40,7 +40,6 @@ After running the init command above, you will be presented with a standard dire
     .. .. /css
     .. .. .. /src
     .. .. .. /sass
-    .. .. .. /less
     .. .. /js
     .. .. .. /src
     .. /images
@@ -62,11 +61,8 @@ After running the init command above, you will be presented with a standard dire
 
 Depending on how you answer the prompt regarding the use of a preprocessor, you will either have a `/src` directory (CSS), a `/sass` directory (Sass), or a `/less` directory (LESS) under your normal `/css` directory.  The goal here is that you only ever edit files in the related source directory and Grunt will automatically build and minify your final stylesheets directly in `/css`.
 
-If you're using Sass or Less, the raw files will be processed into `/css/filename.css` and minified into `/css/filename.min.css`.
+the raw files will be processed into `style.css`.
 
-If you're using vanilla CSS, the source files will be minified into `/css/filename.min.css`.
-
-*Note:* The `style.css` file in the root of the directory shouldn't contain any style definitions. It's used for populating information on WordPress' themes page only. Your theme's style information should go in the appropriate source directory for your preprocessor under `/assets/css`.
 
 ### JavaScript
 

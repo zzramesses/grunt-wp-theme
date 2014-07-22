@@ -65,8 +65,11 @@ module.exports = function( grunt ) {
 		sass:   {
 			all: {
 				files: {
-					'assets/css/{%= js_safe_name %}.css': 'assets/css/sass/{%= js_safe_name %}.scss'
+					'style.css': 'assets/sass/style.scss'
 				}
+			},
+			options: {
+				lineNumbers: true
 			}
 		},
 		autoprefixer: {
@@ -79,23 +82,27 @@ module.exports = function( grunt ) {
 		},
 		cssmin: {
 			options: {
-				banner: '/*! <%= pkg.title %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
-					' * <%= pkg.homepage %>\n' +
-					' * Copyright (c) <%= grunt.template.today("yyyy") %>;' +
-					' * Licensed GPLv2+' +
-					' */\n'
+				banner: "/*!\n" +
+						" * Theme Name:  <%= pkg.title %>\n" +
+						" * Theme URI:   <%= pkg.homepage %>\n" +
+						" * Description: <%= pkg.description %>\n" +
+						" * Author:      <%= pkg.author.name %>\n" +
+						" * Author URI:  <%= pkg.author.url %>\n" +
+						" * Version:     <%= pkg.version %>\n" +
+						" * Tags:        <%  print( pkg.keywords.join(',') ); %>\n" +
+						" * Compiled:    <%= grunt.template.today('yyyy-mm-dd') %>\n" +
+						" *\n" +
+						" * Copyright (c) <%= grunt.template.today('yyyy') %>\n" +
+						" * License:     GPLv2+\n" +
+						" * License URI: http://www.gnu.org/licenses/gpl-2.0.html\n" +
+						" */\n"
 			},
 			minify: {
 				expand: true,
-				{% if ('sass' === css_type || 'less' === css_type) { %}
-				cwd: 'assets/css/',
-				src: ['{%= js_safe_name %}.css'],
-				{% } else { %}
-				cwd: 'assets/css/src/',
-				src: ['{%= js_safe_name %}.css'],
-				{% } %}
-				dest: 'assets/css/',
-				ext: '.min.css'
+				cwd: '',
+				src: ['style.css'],
+				dest: '',
+				ext: '.css'
 			}
 		},
 		watch:  {
