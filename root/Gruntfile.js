@@ -73,11 +73,12 @@ module.exports = function( grunt ) {
 			}
 		},
 		autoprefixer: {
-			dist: {
-				options: {
-					browsers: [ 'last 1 version', '> 1%', 'ie 8' ]
-				},
-				files: ['style.css']
+            options: {
+				browsers: ['> 1%', 'last 1 version',  'ie 8']
+			},
+			single_file: {
+				src: 'style.css',
+				dest: 'style.css'
 			}
 		},
 		cssmin: {
@@ -105,13 +106,12 @@ module.exports = function( grunt ) {
 				ext: '.css'
 			}
 		},
-		watch:  {
-			livereload: {
-				files: ['style.css'],
-				options: {
-					livereload: true
-				}
+		watch: {
+			files: ['assets/scss/*.scss'],
+			options: {
+				livereload: true,
 			},
+		},
 			sass: {
 				files: ['assets/sass/*.scss'],
 				tasks: ['sass', 'cssmin'],
