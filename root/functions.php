@@ -39,15 +39,19 @@ define( '{%= prefix_caps %}_VERSION', '0.1.0' );
   *
   * @since 0.1.0
   */
- function {%= prefix %}_scripts_styles() {
+function {%= prefix %}_enqueue_styles() {
+	wp_enqueue_style('stylesheet', get_stylesheet_uri(),'','','all');
+ }
+ 
+function {%= prefix %}_enqueue_scripts() {
 	$postfix = ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ? '' : '.min';
 	
-	wp_enqueue_style('stylesheet', get_stylesheet_uri(),'','','all');
-
-	wp_enqueue_script( '{%= prefix %}', get_template_directory_uri() . "/assets/js/{%= js_safe_name %}{$postfix}.js", array(), {%= prefix_caps %}_VERSION, true );
+	wp_enqueue_script( '{%= prefix %}', get_template_directory_uri() . "/assets/js/{%= js_safe_name %}{$postfix}.js", array('jquery'), {%= prefix_caps %}_VERSION, true );
 		
  }
- add_action( 'wp_enqueue_scripts', '{%= prefix %}_scripts_styles' );
+ 
+ add_action( 'wp_enqueue_scripts', '{%= prefix %}_enqueue_styles' );
+ add_action( 'wp_enqueue_scripts', '{%= prefix %}_enqueue_scripts' );
  
  /**
   * Add humans.txt to the <head> element.
