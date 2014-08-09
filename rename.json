@@ -1,5 +1,5 @@
 {
 	"theme.php": "{%= js_safe_name %}.php",
-	"assets/js/src/theme.js": "assets/js/src/{%= js_safe_name %}.js",
+	"js/src/theme.js": "js/src/{%= js_safe_name %}.js",
 	"languages/theme.pot": "languages/{%= prefix %}.pot"
 }
