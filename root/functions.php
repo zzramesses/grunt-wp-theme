@@ -45,8 +45,17 @@ function {%= prefix %}_enqueue_styles() {
  
 function {%= prefix %}_enqueue_scripts() {
 	$postfix = ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ? '' : '.min';
+
+	wp_enqueue_script('jquery');
 	
-	wp_enqueue_script( '{%= prefix %}', get_template_directory_uri() . "/assets/js/{%= js_safe_name %}{$postfix}.js", array('jquery'), {%= prefix_caps %}_VERSION, true );
+	wp_enqueue_script('modernizr', get_template_directory_uri(). "/js/vendor/modernizr.custom.js");
+
+	global $is_IE;
+	if ($is_IE) {	
+		wp_enqueue_script('html5shiv', "http://html5shiv.googlecode.com/svn/trunk/html5.js"); 
+	}
+	
+	wp_enqueue_script( '{%= prefix %}', get_template_directory_uri() . "/js/{%= js_safe_name %}{$postfix}.js", array('jquery'), {%= prefix_caps %}_VERSION, true );
 		
  }
  

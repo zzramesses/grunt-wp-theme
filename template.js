@@ -38,19 +38,6 @@ exports.template = function( grunt, init, done ) {
 	], function( err, props ) {
 		props.keywords = [];
 		props.version = '0.1.0';
-		props.devDependencies = {
-			'grunt': '~0.4.2',
-			'matchdep': '~0.1.2',
-			'grunt-contrib-concat': '~0.3.0',
-			'grunt-contrib-uglify': '~0.4.0',
-			'grunt-contrib-cssmin': '~0.6.0',
-			'grunt-contrib-jshint': '~0.1.1',
-			'grunt-contrib-nodeunit': '~0.1.2',
-			'grunt-contrib-watch': '~0.5.0',
-			'grunt-autoprefixer': '~0.7.2',
-			'grunt-contrib-sass': '~0.7.2',
-			'grunt-csscomb' : '~2.0.1',
-		};
 		
 		// Sanitize names where we need to for PHP/JS
 		props.name = props.title.replace( /\s+/g, '-' ).toLowerCase();
